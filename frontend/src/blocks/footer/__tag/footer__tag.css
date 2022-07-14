@@ -1,0 +1,22 @@
+.footer__tag {
+    font-size: 18px;
+    line-height: 21.78px;
+    font-weight: 400;
+    font-style: normal;
+    color:#545454;
+    margin: 66px auto 60px;
+  }
+  
+  @media screen and (max-width: 880px) {
+    .footer__tag {
+      margin: 66px 27px 60px 27px;
+    }
+  }
+  
+  @media screen and (max-width: 539px) {
+    .footer__tag {
+      font-size: 14px;
+      line-height: 16.94px;
+      margin: 48px 27px 36px 27px;
+    }
+  }

@@ -1,0 +1,23 @@
+.header__img {
+    width: 142px;
+    height: 33px;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+  
+  @media screen and (max-width: 880px) {
+    .header__img {
+      margin: 0 0 0 27px;
+    }
+  }
+  
+  @media screen and (max-width: 539px) {
+    .header__img {
+      width: 103.74px;
+      height: 24.4px;
+    }
+  }
+
+  .header__img:hover {
+    opacity: 0.6;
+  }

@@ -1,0 +1,9 @@
+.place {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 282px;
+    grid-template-rows: 282px 79px;
+  }

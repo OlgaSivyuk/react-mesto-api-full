@@ -1,0 +1,4 @@
+.place__reaction {
+  display: flex;
+  flex-direction: column;
+}

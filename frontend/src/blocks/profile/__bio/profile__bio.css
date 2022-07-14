@@ -1,0 +1,25 @@
+/* должно быть 16px, по макету,
+ но тогда нижние блоки едут, 
+ тк отсчет блока в макете с нижней 
+ черты строки без учета висящих букв (у)*/
+ .profile__bio {
+    font-size: 18px;
+    line-height: 21.78px;
+    font-weight: 400;
+    font-style: normal;
+    margin: 8px 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 350px;
+  }
+  
+  @media screen and (max-width: 539px) {
+    .profile__bio {
+      font-size: 14px;
+      line-height: 16.94px;
+      padding: 0 28px 0 0;
+      margin: 6px auto 0;
+      max-width: 200px;
+    }
+  }

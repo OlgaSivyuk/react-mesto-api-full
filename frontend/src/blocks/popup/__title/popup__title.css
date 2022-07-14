@@ -1,0 +1,18 @@
+/* отступ по макету 54px, 
+но не сходтися с пиксель перфект*/
+.popup__title {
+    font-size: 24px;
+    line-height: 29.05px;
+    font-weight: 900;
+    font-style: normal;
+    margin: 0 0 48px;
+    color: #000;
+  }
+  
+  @media screen and (max-width: 539px) {
+    .popup__title {
+      font-size: 18px;
+      line-height: 21.78px;
+      margin: 0 0 75px;
+    }
+  }

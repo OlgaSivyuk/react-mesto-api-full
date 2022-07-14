@@ -1,0 +1,24 @@
+.profile__add-place {
+    width: 150px;
+    height: 50px;
+    padding: 0;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    background: url(../../../images/add_button.svg) no-repeat center;
+    margin-left: auto;
+    margin-right: 0;
+    align-self: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .profile__add-place {
+      width: 282px;
+      margin: 36px auto 0;
+    }
+  }
+
+  .profile__add-place:hover {
+    opacity: 0.6;
+  }

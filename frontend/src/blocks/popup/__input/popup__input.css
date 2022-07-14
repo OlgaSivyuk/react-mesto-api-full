@@ -1,0 +1,27 @@
+/* отступ по макету 13px, 
+но не сходтися с пиксель перфект*/
+.popup__input {
+    display: flex;
+    min-height: 27px;
+    width: 358px;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 16.94px;
+    font-weight: 400;
+    font-style: normal;
+    color: #000;
+  }
+  
+  
+  @media screen and (max-width: 539px) {
+    .popup__input {
+      width: 238px;
+    }
+  }
+  
+  .popup__input:focus {
+    outline: none;
+  }

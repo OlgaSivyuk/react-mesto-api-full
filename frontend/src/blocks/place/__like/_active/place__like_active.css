@@ -1,0 +1,10 @@
+/* заготовка для клика по сердечку*/
+.place__like_active {
+  width: 22px;
+  height: 19px;
+  padding: 0;
+  border: none;
+  margin-right: 20px;
+  cursor: pointer;
+  background: url(../../../../images/heart_black.svg);
+}
