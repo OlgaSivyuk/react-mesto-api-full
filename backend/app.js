@@ -56,6 +56,7 @@ app.use((req, res, next) => {
 });
 
 app.use(errorLogger); // ПР15 подключаем логгер ошибок
+app.use(require('./middlewares/cors')); // ПР15 подключаем cors
 
 app.use(errors());
 
