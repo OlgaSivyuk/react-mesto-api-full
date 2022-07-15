@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger); // ПР15 подключаем логгер запросов
+app.use(require('./middlewares/cors')); // ПР15 подключаем cors
 
 // пути для логина и регистрации
 app.post('/signup', celebrate({
@@ -56,7 +57,6 @@ app.use((req, res, next) => {
 });
 
 app.use(errorLogger); // ПР15 подключаем логгер ошибок
-app.use(require('./middlewares/cors')); // ПР15 подключаем cors
 
 app.use(errors());
 
