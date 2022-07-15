@@ -234,7 +234,7 @@ function App() {
     //   let token = localStorage.getItem("jwt");
       Auth.getContent()
         .then((res) => {
-          const { _id, email } = res;
+          const { _id, email } = res.data;
           setLoggedIn(true);
           setUserData({ _id, email });
           //history.push('/');

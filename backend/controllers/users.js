@@ -87,16 +87,12 @@ module.exports.getUserById = (req, res, next) => {
 module.exports.getUserMe = (req, res, next) => {
   console.log(req.user);
   User.findOne({ _id: req.user._id })
-    .then((users) => {
-      if (users === null) {
+    .then((user) => {
+      if (user === null) {
         next(new NotFoundError('Пользователь по указанному id не найден.'));
       }
       return res.status(OK_CODE)
-        .send({
-          data: users,
-          _id: req.user._id,
-          email: req.user.email,
-        });
+        .send({ data: user });
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
