@@ -3,19 +3,21 @@ const allowedCors = [
   // 'https://praktikum.tk',
   // 'http://praktikum.tk',
   // 'localhost:3000'
-  "https://mesto.project.olgasivyuk.nomoredomains.xyz",
-  "http://mesto.project.olgasivyuk.nomoredomains.xyz",
-  "http://api.mesto.project.olgasivyuk.nomoredomains.xyz",
-  "https://api.mesto.project.olgasivyuk.nomoredomains.xyz",
-  "localhost:3000",
+  'https://mesto.project.olgasivyuk.nomoredomains.xyz',
+  'http://mesto.project.olgasivyuk.nomoredomains.xyz',
+  // "http://api.mesto.olgasivyuk.nomoredomains.xyz",
+  // "https://api.mesto.olgasivyuk.nomoredomains.xyz",
+  'localhost:3000',
+  'http://localhost:3000',
 ];
 
+// eslint-disable-next-line consistent-return
 module.exports = ((req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
 
   // Значение для заголовка Access-Control-Allow-Methods по умолчанию (разрешены все типы запросов)
-  const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
   // сохраняем список заголовков исходного запроса
   const requestHeaders = req.headers['access-control-request-headers'];
