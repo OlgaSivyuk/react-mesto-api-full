@@ -208,11 +208,13 @@ function App() {
     return Auth.authorize(password, email)
       .then((data) => {
         if (data.email) {
-          setLoggedIn(true);
-          setUserData({ _id: data._id, email: data.email });
+           setLoggedIn(true);
+           setUserData({ _id: data._id, email: data.email });
+
+          // localStorage.setItem({ _id: data._id, email: data.email });
+          // handleCheckToken();
 
           // localStorage.setItem("jwt", data.token);
-
           // handleCheckToken();
           history.push("/");
         }
@@ -228,9 +230,9 @@ function App() {
   }
 
   function handleCheckToken() {
-    if (localStorage.getItem("jwt")) {
-      let token = localStorage.getItem("jwt");
-      Auth.getContent(token)
+    // if (localStorage.getItem("jwt")) {
+    //   let token = localStorage.getItem("jwt");
+      Auth.getContent()
         .then((res) => {
           const { _id, email } = res;
           setLoggedIn(true);
@@ -240,7 +242,7 @@ function App() {
         .catch((err) => {
           console.log(`Ошибка...: ${err}`);
         });
-    }
+    //}
   }
 
   function handleLogOut() {

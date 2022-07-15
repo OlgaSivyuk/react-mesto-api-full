@@ -1,3 +1,5 @@
+// require('dotenv').config(); // ПР15
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -26,6 +28,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger); // ПР15 подключаем логгер запросов
 app.use(require('./middlewares/cors')); // ПР15 подключаем cors
+
+app.get('/crash-test', () => { // ПР15 краш-тест сервера
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 // пути для логина и регистрации
 app.post('/signup', celebrate({

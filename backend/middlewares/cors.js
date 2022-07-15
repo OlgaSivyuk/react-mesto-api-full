@@ -21,9 +21,10 @@ module.exports = ((req, res, next) => {
   const requestHeaders = req.headers['access-control-request-headers'];
   res.header('X-Server', 'test');
   // проверяем, что источник запроса есть среди разрешённых
-  if (allowedCors.includes(origin)) {
+  if (allowedCors.includes(origin, true)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', true);
   }
   // Если это предварительный запрос, добавляем нужные заголовки
   if (method === 'OPTIONS') {

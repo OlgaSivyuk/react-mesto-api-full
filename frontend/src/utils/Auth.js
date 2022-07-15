@@ -25,17 +25,18 @@ export function authorize(password, email) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
+    credentials: 'include', // ПР15
     body: JSON.stringify({password, email})
   })
   .then(checkResponse)
 };
 
-export function getContent(token) {
+export function getContent() {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      //'Authorization': `Bearer ${token}`,
     }
   })
   .then(checkResponse)
