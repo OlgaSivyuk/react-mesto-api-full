@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const SALT_ROUNDS = 10;
-const SECRET_KEY = 'very_secret';
+// const SECRET_KEY = 'very_secret';
+const { NODE_ENV, SECRET_KEY } = process.env;
 
 const {
   OK_CODE,
@@ -153,7 +154,8 @@ module.exports.login = (req, res, next) => {
           if (!matched) {
             throw new AuthorizationError('Неправильные email или пароль (проверка хеша).');
           }
-          const token = jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: '7d' });
+          // const token = jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: '7d' });
+          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? SECRET_KEY : 'dev-secret', { expiresIn: '7d' });
           res.cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true });
           res.status(OK_CODE).send({ _id: user._id, email: user.email });
         })

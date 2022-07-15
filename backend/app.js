@@ -1,4 +1,7 @@
-// require('dotenv').config(); // ПР15
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config(); // ПР15
+
+console.log(process.env.NODE_ENV); // production
 
 const express = require('express');
 const mongoose = require('mongoose');
