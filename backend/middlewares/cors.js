@@ -5,10 +5,8 @@ const allowedCors = [
   // 'localhost:3000'
   'https://mesto.project.olgasivyuk.nomoredomains.xyz',
   'http://mesto.project.olgasivyuk.nomoredomains.xyz',
-  // "http://api.mesto.olgasivyuk.nomoredomains.xyz",
-  // "https://api.mesto.olgasivyuk.nomoredomains.xyz",
-  'localhost:3000',
-  'http://localhost:3000',
+  'http://api.mesto.olgasivyuk.nomoredomains.xyz',
+  'https://api.mesto.olgasivyuk.nomoredomains.xyz',
 ];
 
 // eslint-disable-next-line consistent-return
