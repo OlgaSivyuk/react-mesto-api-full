@@ -74,6 +74,7 @@ function App() {
 
       history.push("/");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedIn]);
 
   function handleUpdateUser({ name, about }) {
@@ -183,7 +184,7 @@ function App() {
     return Auth.register(password, email)
       .then((res) => {
         console.log("res", res);
-        const { email } = res.data;
+        const { email } = res;
         setUserData({ ...userData, email });
         setIsInfoTooltipMessage({
           image: successSignImg,
@@ -228,7 +229,7 @@ function App() {
       let token = localStorage.getItem("jwt");
       Auth.getContent(token)
         .then((res) => {
-          const { _id, email } = res.data;
+          const { _id, email } = res;
           setLoggedIn(true);
           setUserData({ _id, email });
           //history.push('/');
