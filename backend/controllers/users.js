@@ -92,7 +92,11 @@ module.exports.getUserMe = (req, res, next) => {
         next(new NotFoundError('Пользователь по указанному id не найден.'));
       }
       return res.status(OK_CODE)
-        .send({ data: users });
+        .send({
+          data: users,
+          _id: req.user._id,
+          email: req.user.email,
+        });
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {

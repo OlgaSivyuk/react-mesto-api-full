@@ -37,7 +37,8 @@ export function getContent() {
     headers: {
       'Content-Type': 'application/json',
       //'Authorization': `Bearer ${token}`,
-    }
+    },
+    credentials: 'include', // ПР15
   })
   .then(checkResponse)
 }
