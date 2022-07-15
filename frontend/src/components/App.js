@@ -207,10 +207,13 @@ function App() {
   function handleLogin({ password, email }) {
     return Auth.authorize(password, email)
       .then((data) => {
-        if (data.token) {
-          localStorage.setItem("jwt", data.token);
+        if (data.email) {
+          setLoggedIn(true);
+          setUserData({ _id: data._id, email: data.email });
 
-          handleCheckToken();
+          // localStorage.setItem("jwt", data.token);
+
+          // handleCheckToken();
           history.push("/");
         }
       })
