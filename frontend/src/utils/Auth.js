@@ -13,6 +13,7 @@ export function register(password, email) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
+    credentials: 'include', // ПР15
     body: JSON.stringify({password, email})
   })
   .then(checkResponse)

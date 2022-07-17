@@ -46,12 +46,14 @@ function App() {
     if (loggedIn) {
       api
         .getProfile()
-        .then((userData) => {
+        .then((res) => {
+          const resData = res.data;
           setCurrentUser({
-            ...userData,
-            userName: userData.name,
-            userDescription: userData.about,
-            userAvatar: userData.avatar,
+            // ...userData,
+            ...currentUser,
+            name: resData.name,
+            description: resData.about,
+            avatar: resData.avatar,
           });
         })
         .catch((err) => console.log(`Ошибка...: ${err}`));
@@ -59,7 +61,7 @@ function App() {
       api
         .getUsersCards()
         .then((cardList) => {
-          const usersCard = cardList.map((card) => {
+          const usersCard = cardList.data.map((card) => {
             return {
               name: card.name,
               link: card.link,
@@ -80,12 +82,14 @@ function App() {
   function handleUpdateUser({ name, about }) {
     api
       .editProfile(name, about)
-      .then((userData) => {
+      .then((res) => {
+        const resData = res.data;
         setCurrentUser({
-          ...userData,
-          userName: userData.name,
-          userDescription: userData.about,
-          userAvatar: userData.avatar,
+          // ...resData,
+          ...currentUser,
+          name: resData.name,
+          description: resData.about,
+          avatar: resData.avatar,
         });
         closeAllPopups();
       })
@@ -95,10 +99,12 @@ function App() {
   function handleUpdateAvatar({ avatar }) {
     api
       .editProfileAvatar(avatar)
-      .then((userData) => {
+      .then((res) => {
+        const userData = res.data;
         setCurrentUser({
-          ...userData,
-          userAvatar: userData.avatar,
+          // ...userData,
+          ...currentUser,
+          avatar: userData.avatar,
         });
         closeAllPopups();
       })
@@ -108,7 +114,8 @@ function App() {
   function handleAddPlaceSubmit({ name, link }) {
     api
       .addNewCard(name, link)
-      .then((newCard) => {
+      .then((res) => {
+        const newCard = res.data;
         setCards([
           {
             name: newCard.name,

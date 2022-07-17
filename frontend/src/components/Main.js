@@ -11,7 +11,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
       <section className='profile'>
         <div className='profile__avatar-img'>
           <img
-            src={currentUser.userAvatar}
+            src={currentUser.avatar}
             alt='Фото профиля'
             className='profile__avatar'
           />
@@ -23,7 +23,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
         </div>
         <div className='profile__info'>
           <div className='profile__top-row'>
-            <h1 className='profile__name'>{currentUser.userName}</h1>
+            <h1 className='profile__name'>{currentUser.name}</h1>
             <button
               type='button'
               id='open_popup'
@@ -32,7 +32,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
               onClick={onEditProfile}
             ></button>
           </div>
-          <p className='profile__bio'>{currentUser.userDescription}</p>
+          <p className='profile__bio'>{currentUser.description}</p>
         </div>
         <button
           type='button'

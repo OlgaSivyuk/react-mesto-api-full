@@ -7,7 +7,8 @@ class Api {
   getProfile() { 
     //console.log('getProfile');
     return fetch(`${this._baseUrl}/users/me`, { // применяем шаблонные строки ${}
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include', // ПР15
    })
     .then(res => res.ok ? res.json(): 
       Promise.reject(res.status))
@@ -15,7 +16,8 @@ class Api {
   
   getUsersCards() { 
     return fetch(`${this._baseUrl}/cards`, { // 1. отправляем headers
-        headers: this._headers
+        headers: this._headers,
+        credentials: 'include', // ПР15
     })
     .then(res => res.ok ? res.json():  //2. проверяем,  что сервер ответил успешно res.ok // 3. если успешно,  делаем из ответа объект res.json() 
       Promise.reject(res.status)) //4. если ответ не успешный,  то проваливаемся в ошибку  выводим catch
@@ -25,6 +27,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH', 
         headers: this._headers,
+        credentials: 'include', // ПР15
         body: JSON.stringify({ // делаем из объекта строку для передачи данных
             name,
             about
@@ -38,6 +41,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
         method: 'POST', // этот метод принимает данные на хранение, используется при загрузке файлов
         headers: this._headers,
+        credentials: 'include', // ПР15
         body: JSON.stringify({
             name,
             link
@@ -51,6 +55,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}`,{ // применяем шаблонные строки и id, который забираем из карточки во время удаления
         method: 'DELETE',
         headers: this._headers,
+        credentials: 'include', // ПР15
     })
     .then(res => res.ok ? res.json():
       Promise.reject(res.status))
@@ -60,6 +65,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}/likes`,{ 
         method: 'DELETE',
         headers: this._headers,
+        credentials: 'include', // ПР15
     })
     .then(res => res.ok ? res.json():
       Promise.reject(res.status))
@@ -69,6 +75,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}/likes`,{ 
         method: 'PUT',
         headers: this._headers,
+        credentials: 'include', // ПР15
     })
     .then(res => res.ok ? res.json():
       Promise.reject(res.status))
@@ -78,6 +85,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`,{ 
         method: 'PATCH',
         headers: this._headers,
+        credentials: 'include', // ПР15
         body: JSON.stringify({ // делаем из объекта строку для передачи данных
           avatar
       })
@@ -90,10 +98,10 @@ class Api {
   }
   
   export const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39', // здесь указываем свою когорту
-    // baseUrl: 'https://api.mesto.olgasivyuk.nomoredomains.xyz', // ПР15
+    //baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39', // здесь указываем свою когорту
+    baseUrl: 'https://api.mesto.olgasivyuk.nomoredomains.xyz', // ПР15
     headers: {
-      authorization: '88e16114-a16c-404a-8007-3bb931ff1f77', // здесь указываем свой токен
-      'Content-Type': 'application/json'
+      //authorization: '88e16114-a16c-404a-8007-3bb931ff1f77', // здесь указываем свой токен
+      'Content-Type': 'application/json',
     }
   }); 
