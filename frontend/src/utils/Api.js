@@ -90,7 +90,8 @@ class Api {
   }
   
   export const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39', // здесь указываем свою когорту
+    // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39', // здесь указываем свою когорту
+    baseUrl: 'https://api.mesto.olgasivyuk.nomoredomains.xyz', // ПР15
     headers: {
       authorization: '88e16114-a16c-404a-8007-3bb931ff1f77', // здесь указываем свой токен
       'Content-Type': 'application/json'
