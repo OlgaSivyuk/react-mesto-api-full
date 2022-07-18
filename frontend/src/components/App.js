@@ -54,6 +54,7 @@ function App() {
             name: resData.name,
             description: resData.about,
             avatar: resData.avatar,
+            id: resData._id,
           });
         })
         .catch((err) => console.log(`Ошибка...: ${err}`));
@@ -67,7 +68,8 @@ function App() {
               link: card.link,
               likes: card.likes,
               cardId: card._id,
-              ownerId: card.owner._id,
+              // ownerId: card.owner._id,
+              ownerId: card.owner,
             };
           });
           setCards(usersCard);
@@ -122,7 +124,8 @@ function App() {
             link: newCard.link,
             likes: newCard.likes,
             cardId: newCard._id,
-            ownerId: newCard.owner._id,
+            // ownerId: newCard.owner._id,
+            ownerId: newCard.owner,
           },
           ...cards,
         ]);
@@ -132,8 +135,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((user) => user._id === currentUser._id);
-
+    const isLiked = card.likes.some(userId => userId === currentUser.id);
     if (isLiked) {
       api
         .deleteLike(card.cardId)
@@ -146,7 +148,8 @@ function App() {
                   link: newCard.link,
                   likes: newCard.likes,
                   cardId: newCard._id,
-                  ownerId: newCard.owner._id,
+                  // ownerId: newCard.owner._id,
+                  ownerId: newCard.owner,
                 };
               } else return item;
             })
@@ -165,7 +168,8 @@ function App() {
                   link: newCard.link,
                   likes: newCard.likes,
                   cardId: newCard._id,
-                  ownerId: newCard.owner._id,
+                  // ownerId: newCard.owner._id,
+                  ownerId: newCard.owner,
                 };
               } else return item;
             })
