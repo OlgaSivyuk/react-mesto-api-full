@@ -3,4 +3,6 @@
   
 
 IP: 51.250.97.26  
+[Ссылка на адрес сервера](https://api.mesto.olgasivyuk.nomoredomains.xyz/)  
+  
 [Ссылка на проект](https://mesto.project.olgasivyuk.nomoredomains.xyz/)

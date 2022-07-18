@@ -4,7 +4,6 @@ const AuthorizationError = require('../errors/authorization-error');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
-// eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
   console.log('is authorized');
   const token = req.cookies.jwt;

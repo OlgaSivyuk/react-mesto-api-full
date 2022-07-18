@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const SALT_ROUNDS = 10;
-// const SECRET_KEY = 'very_secret';
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 const {
@@ -25,9 +24,6 @@ module.exports.createUser = (req, res, next) => {
     password,
   } = req.body;
 
-  // if (!email || !password) {
-  //   return res.status(400).send({ message: 'Не передан email или пароль' });
-  // } return
   bcrypt.hash(password, SALT_ROUNDS)
     .then((hash) => {
       console.log(hash);
