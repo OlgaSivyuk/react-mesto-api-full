@@ -24,9 +24,9 @@ router.post('/signin', celebrate({
 
 router.use(auth);
 
-// router.get('/signout', (req, res) => {
-//   res.clearCookie('jwt').send({ message: 'Выход' });
-// });
+router.get('/signout', (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Выход' });
+});
 
 router.use('/users', require('./users'));
 router.use('/cards', require('./cards'));
