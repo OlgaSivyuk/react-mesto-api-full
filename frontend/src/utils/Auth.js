@@ -34,7 +34,7 @@ export function authorize(password, email) {
 
 export function signout(){
     return fetch(`${BASE_URL}/signout`, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
