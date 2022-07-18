@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 
-const { allRoutes } = require('./routes/all-routes');
+const allRoutes = require('./routes/all-routes');
 // const { celebrate, Joi } = require('celebrate'); // перенесла в routes
 // const auth = require('./middlewares/auth'); // перенесла в routes
 // const { regexUrl } = require('./constants/regex'); // перенесла в routes
