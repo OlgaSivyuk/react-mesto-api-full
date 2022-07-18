@@ -32,6 +32,18 @@ export function authorize(password, email) {
   .then(checkResponse)
 };
 
+export function signout(){
+    return fetch(`${BASE_URL}/signout`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include', // ПР15
+    })
+    .then(checkResponse)
+};
+
 export function getContent() {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',

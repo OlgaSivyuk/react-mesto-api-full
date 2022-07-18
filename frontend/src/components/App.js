@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react';
-import { api } from '../utils/Api.js';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
-import * as Auth from '../utils/Auth.js';
-import ProtectedRoute from './ProtectedRoute';
-import Header from './Header';
-import Main from './Main';
-import Login from './Login';
-import Register from './Register';
-import InfoToolTip from './InfoToolTip'
-import EditProfilePopup from './EditProfilePopup';
-import EditAvatarPopup from './EditAvatarPopup';
-import AddPlacePopup from './AddPlacePopup'
-import ImagePopup from './ImagePopup';
-import DeleteCardConfirmPopup from './DeleteCardConfirmPopup';
-import Footer from './Footer';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { useState, useEffect } from "react";
+import { api } from "../utils/Api.js";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import * as Auth from "../utils/Auth.js";
+import ProtectedRoute from "./ProtectedRoute";
+import Header from "./Header";
+import Main from "./Main";
+import Login from "./Login";
+import Register from "./Register";
+import InfoToolTip from "./InfoToolTip";
+import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
+import AddPlacePopup from "./AddPlacePopup";
+import ImagePopup from "./ImagePopup";
+import DeleteCardConfirmPopup from "./DeleteCardConfirmPopup";
+import Footer from "./Footer";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-import successSignImg from '../images/union.svg';
-import unSuccessSignImg from '../images/union-wrong.svg';
+import successSignImg from "../images/union.svg";
+import unSuccessSignImg from "../images/union-wrong.svg";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -34,8 +34,11 @@ function App() {
   const [userData, setUserData] = useState({ _id: "", email: "" });
   const [loggedIn, setLoggedIn] = useState(false);
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false); //TODO объединить стейты по рекомендацции ревьюера
-  const [isInfoTooltipMessage, setIsInfoTooltipMessage] = useState({ image: "", text: ""});
-  
+  const [isInfoTooltipMessage, setIsInfoTooltipMessage] = useState({
+    image: "",
+    text: "",
+  });
+
   const history = useHistory();
 
   useEffect(() => {
@@ -78,7 +81,7 @@ function App() {
 
       history.push("/");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedIn]);
 
   function handleUpdateUser({ name, about }) {
@@ -135,7 +138,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(userId => userId === currentUser.id);
+    const isLiked = card.likes.some((userId) => userId === currentUser.id);
     if (isLiked) {
       api
         .deleteLike(card.cardId)
@@ -221,7 +224,7 @@ function App() {
         if (data.email) {
           setLoggedIn(true);
           setUserData({ _id: data._id, email: data.email });
-          localStorage.setItem("email", data.email );
+          localStorage.setItem("email", data.email);
           handleCheckToken();
           // localStorage.setItem("jwt", data.token);
           // handleCheckToken();
@@ -240,7 +243,7 @@ function App() {
 
   function handleCheckToken() {
     if (localStorage.getItem("email")) {
-    //   let token = localStorage.getItem("jwt");
+      //   let token = localStorage.getItem("jwt");
       Auth.getContent()
         .then((res) => {
           const { _id, email } = res.data;
@@ -251,15 +254,21 @@ function App() {
         .catch((err) => {
           console.log(`Ошибка...: ${err}`);
         });
-      }
+    }
   }
 
   function handleLogOut() {
     // localStorage.removeItem("jwt");
-    localStorage.removeItem("email");
-    setLoggedIn(false);
-    setUserData({ _id: "", email: "" });
-    history.push("/signin");
+    return Auth.signout()
+      .then(() => {
+        localStorage.removeItem("email");
+        setLoggedIn(false);
+        setUserData({});
+        history.push("/signin");
+    })
+    .catch((err) => {
+      console.log(`Ошибка...: ${err}`);
+    });
   }
 
   function handleEditAvatarClick() {

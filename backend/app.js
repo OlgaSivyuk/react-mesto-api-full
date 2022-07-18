@@ -39,30 +39,6 @@ app.get('/crash-test', () => { // ПР15 краш-тест сервера
   }, 0);
 });
 
-// пути для логина и регистрации
-// app.post('/signup', celebrate({ // перенесла в routes
-//   body: Joi.object().keys({
-//     email: Joi.string().required().email(),
-//     password: Joi.string().required(),
-//     name: Joi.string().min(2).max(30),
-//     about: Joi.string().min(2).max(30),
-//     avatar: Joi.string().regex(regexUrl),
-//   }),
-// }), createUser);
-
-// app.post('/signin', celebrate({ // перенесла в routes
-//   body: Joi.object().keys({
-//     email: Joi.string().required().email(),
-//     password: Joi.string().required(),
-//   }),
-// }), login);
-
-// app.use(auth); // перенесла в routes
-
-// пути роутинга
-// app.use('/users', require('./routes/users')); // перенесла в routes
-// app.use('/cards', require('./routes/cards')); // перенесла в routes
-
 app.use(allRoutes);
 
 // обработка несуществующего роута
