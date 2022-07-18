@@ -39,6 +39,10 @@ app.get('/crash-test', () => { // ПР15 краш-тест сервера
   }, 0);
 });
 
+app.post('/signout', (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Выход' });
+});
+
 app.use(allRoutes);
 
 // обработка несуществующего роута

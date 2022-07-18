@@ -27,8 +27,8 @@ router.use(auth);
 router.use('/users', require('./users'));
 router.use('/cards', require('./cards'));
 
-router.post('/signout', (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
-});
+// router.post('/signout', (req, res) => {
+//   res.clearCookie('jwt').send({ message: 'Выход' });
+// });
 
 module.exports = router;
