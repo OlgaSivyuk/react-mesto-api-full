@@ -24,11 +24,11 @@ router.post('/signin', celebrate({
 
 router.use(auth);
 
+router.get('/signout', (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Выход' });
+});
+
 router.use('/users', require('./users'));
 router.use('/cards', require('./cards'));
-
-// router.post('/signout', (req, res) => {
-//   res.clearCookie('jwt').send({ message: 'Выход' });
-// });
 
 module.exports = router;
